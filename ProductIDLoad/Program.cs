@@ -156,7 +156,6 @@ namespace ProductIDLoad
 
             SqlCommand cmd2 = new SqlCommand();
             cmd2.Connection = con2;
-            //TODO make this a view
             cmd2.CommandText = "select sSku from dbo.productstb where StatusFlag = 'A' and  id = ' ' ";
             SqlDataReader reader = cmd2.ExecuteReader();
 
@@ -223,7 +222,6 @@ namespace ProductIDLoad
                         {
                             // Write Error Log
                             errorMessage = "Status: " + apiData.status + " Message " + apiData.message;
-                            //TODO comments
                             MethodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
                             insertRowErrorlog(Sku, batchIdNum, apiCall, errorMessage, " ", MethodName);
                         }
@@ -243,7 +241,6 @@ namespace ProductIDLoad
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con2;
-            //TODO add the update timestamp
             cmd.CommandText = "update dbo.productstb set id=@id, title=@title, brandId=@brandId, brandName=@brandName, categoryIdPath=@categoryIdPath, " +
                                 "categoryNamePath=@categoryNamePath, imageUrl=@imageUrl, upc=@upc, mpn=@mpn, storeCount=@storeCount, offersCount=@offersCount, offersPriceRange=@offersPriceRange," +
                                 " updateTimeStamp=@updateTimeStamp" +
@@ -301,10 +298,7 @@ namespace ProductIDLoad
                     catch (WebException ex)
                     {
                         // Write Error Log
-                        //Need a way to pick up the sku
-                        //var sSku = "no sku";
                         var apiUrl = url;
-                        //TODO How much space do we have - do we want the Response also?
                         //we only want to attempt again on a 429 or 500
                         if (ex.Status == WebExceptionStatus.ProtocolError)
                         {
