@@ -365,8 +365,7 @@ namespace ProductIDLoad
 
         private static void insertRowBatch(string eventType, string comments, int batchIdNum)
         {
-            //SqlConnection con = new SqlConnection();
-            //con.ConnectionString = ConfigurationManager.ConnectionStrings["IConnectionString"].ConnectionString;
+
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con2;
             cmd.CommandText = "INSERT INTO  dbo.batchHistorytb (batchIdNum, eventType, applicationProcess, comments ) values(@batchIdNum, @eventType, 'ProductIDLoad', @comments)";
